@@ -18,6 +18,20 @@ ALTER TABLE Account ADD COLUMN modifiedOn DATETIME;
 Query OK, 0 rows affected (0.02 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 ---
+DESCRIBE Account;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| email      | varchar(255) | YES  |     | NULL    |                |
+| password   | varchar(40)  | YES  |     | NULL    |                |
+| createdOn  | datetime     | YES  |     | NULL    |                |
+| modifiedOn | datetime     | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.02 sec)
+
+
+
 ALTER TABLE AddressBook ADD COLUMN accountId INT;
 ---
 Query OK, 0 rows affected (0.01 sec)
@@ -38,6 +52,20 @@ ALTER TABLE AddressBook ADD COLUMN modifiedOn DATETIME;
 Query OK, 0 rows affected (0.07 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 ---
+DESCRIBE AddressBook;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| accountId  | int(11)      | YES  |     | NULL    |                |
+| name       | varchar(255) | YES  |     | NULL    |                |
+| createdOn  | datetime     | YES  |     | NULL    |                |
+| modifiedOn | datetime     | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+
+
 ALTER TABLE Entry ADD COLUMN addressBookId INT;
 ---
 Query OK, 0 rows affected (0.01 sec)
@@ -92,3 +120,22 @@ ALTER TABLE Entry ADD COLUMN contentLineFive VARCHAR(255);
 ---
 Query OK, 0 rows affected (0.01 sec)
 Records: 0  Duplicates: 0  Warnings: 0
+---
+DESCRIBE Entry;
++------------------+---------------------------------+------+-----+---------+----------------+
+| Field            | Type                            | Null | Key | Default | Extra          |
++------------------+---------------------------------+------+-----+---------+----------------+
+| id               | int(11)                         | NO   | PRI | NULL    | auto_increment |
+| addressBookId    | int(11)                         | YES  |     | NULL    |                |
+| firstName        | varchar(255)                    | YES  |     | NULL    |                |
+| lastName         | varchar(255)                    | YES  |     | NULL    |                |
+| birthdate        | datetime                        | YES  |     | NULL    |                |
+| type             | enum('home','work','other')     | YES  |     | NULL    |                |
+| subtype          | enum('phone','address','email') | YES  |     | NULL    |                |
+| contentLineOne   | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineTwo   | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineThree | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFour  | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFive  | varchar(255)                    | YES  |     | NULL    |                |
++------------------+---------------------------------+------+-----+---------+----------------+
+12 rows in set (0.02 sec)
