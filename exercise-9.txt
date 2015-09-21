@@ -1,0 +1,75 @@
+CREATE DATABASE Barn;
+---
+Query OK, 1 row affected (0.00 sec)
+
+
+
+USE Barn;
+---
+Database changed
+
+
+
+CREATE TABLE Population ( id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) );
+---
+Query OK, 0 rows affected (0.00 sec)
+---
+ALTER TABLE Population ADD COLUMN date DATETIME;
+---
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+---
+ALTER TABLE Population ADD COLUMN type ENUM("roosters", "hens", "chicks");
+---
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+---
+ALTER TABLE Population ADD COLUMN ammount INT;
+---
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+---
+DESCRIBE Population;
+---
++---------+----------------------------------+------+-----+---------+----------------+
+| Field   | Type                             | Null | Key | Default | Extra          |
++---------+----------------------------------+------+-----+---------+----------------+
+| id      | int(11)                          | NO   | PRI | NULL    | auto_increment |
+| date    | datetime                         | YES  |     | NULL    |                |
+| type    | enum('roosters','hens','chicks') | YES  |     | NULL    |                |
+| ammount | int(11)                          | YES  |     | NULL    |                |
++---------+----------------------------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+
+
+CREATE TABLE Chicks ( id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) );
+---
+Query OK, 0 rows affected (0.01 sec)
+---
+ALTER TABLE Chicks ADD COLUMN bornOn DATETIME;
+---
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+---
+ALTER TABLE Chicks ADD COLUMN ammount INT;
+---
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+---
+ALTER TABLE Chicks ADD COLUMN ageOn DATETIME;
+---
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+---
+DESCRIBE Chicks;
+---
++---------+----------+------+-----+---------+----------------+
+| Field   | Type     | Null | Key | Default | Extra          |
++---------+----------+------+-----+---------+----------------+
+| id      | int(11)  | NO   | PRI | NULL    | auto_increment |
+| bornOn  | datetime | YES  |     | NULL    |                |
+| ammount | int(11)  | YES  |     | NULL    |                |
+| ageOn   | datetime | YES  |     | NULL    |                |
++---------+----------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
