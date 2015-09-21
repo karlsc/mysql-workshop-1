@@ -3,7 +3,8 @@ Query OK, 1 row affected (0.00 sec)
 
 USE Hotel;
 Database changed
-mysql> CREATE TABLE Floors ( id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) );
+
+CREATE TABLE Floors ( id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) );
 Query OK, 0 rows affected (0.10 sec)
 
 ALTER TABLE Floors ADD COLUMN roomsWithCarpet BOOLEAN;
@@ -25,10 +26,6 @@ ALTER TABLE Rooms ADD COLUMN rentable BOOLEAN;
 Query OK, 0 rows affected (0.08 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-ALTER TABLE Rooms ADD COLUMN vacant BOOLEAN;
-Query OK, 0 rows affected (0.07 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
 ALTER TABLE Rooms ADD COLUMN capacity ENUM("1", "2", "3+");
 Query OK, 0 rows affected (0.08 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -37,8 +34,19 @@ ALTER TABLE Rooms ADD COLUMN privateKitchen BOOLEAN;
 Query OK, 0 rows affected (0.10 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-ALTER TABLE Rooms ADD COLUMN date DATETIME;
+CREATE TABLE Rents ( id int NOT NULL AUTO_INCREMENT, PRIMARY KEY (id) );
+Query OK, 0 rows affected (0.03 sec)
+
+ALTER TABLE Rents ADD COLUMN roomsId INT;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+ALTER TABLE Rents ADD COLUMN dateArrived DATETIME;
 Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+ALTER TABLE Rents ADD COLUMN dateLeft DATETIME;
+Query OK, 0 rows affected (0.07 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
 DESCRIBE Floors;
@@ -58,9 +66,18 @@ DESCRIBE Rooms;
 | id             | int(11)            | NO   | PRI | NULL    | auto_increment |
 | floorsId       | int(11)            | YES  |     | NULL    |                |
 | rentable       | tinyint(1)         | YES  |     | NULL    |                |
-| vacant         | tinyint(1)         | YES  |     | NULL    |                |
 | capacity       | enum('1','2','3+') | YES  |     | NULL    |                |
 | privateKitchen | tinyint(1)         | YES  |     | NULL    |                |
-| date           | datetime           | YES  |     | NULL    |                |
 +----------------+--------------------+------+-----+---------+----------------+
-7 rows in set (0.00 sec)
+5 rows in set (0.00 sec)
+
+DESCRIBE Rents;
++-------------+----------+------+-----+---------+----------------+
+| Field       | Type     | Null | Key | Default | Extra          |
++-------------+----------+------+-----+---------+----------------+
+| id          | int(11)  | NO   | PRI | NULL    | auto_increment |
+| roomsId     | int(11)  | YES  |     | NULL    |                |
+| dateArrived | datetime | YES  |     | NULL    |                |
+| dateLeft    | datetime | YES  |     | NULL    |                |
++-------------+----------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
