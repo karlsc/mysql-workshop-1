@@ -1,0 +1,11 @@
+CREATE DATABASE decodemtl_test;
+---
+Query OK, 1 row affected (0.00 sec)
+
+
+
+
+
+CREATE DATABASE decodemtl_addressbook;
+---
+Query OK, 1 row affected (0.00 sec)
